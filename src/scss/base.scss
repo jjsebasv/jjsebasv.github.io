@@ -1,0 +1,17 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+  height: 297mm;
+  margin: 0 auto;
+  text-align: center;
+  width: 210mm;
+}
+
+.center {
+  align-items: flex-start;
+  background-color: $grey-background;
+  display: flex;
+  flex-wrap: wrap;
+  height: 297mm;
+  text-align: center;
+  width: 210mm;
+}

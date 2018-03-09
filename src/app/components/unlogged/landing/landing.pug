@@ -1,0 +1,30 @@
+span
+  | {{ landingCtrl.helloWorld }}
+
+.container
+  .title
+    span
+      | {{ 'WELCOME' | translate }}
+  .subtitle(ng-switch='landingCtrl.state')
+    span(ng-switch-when='login')
+      | {{ 'WELCOME_LOGIN' | translate }}
+    span(ng-switch-default)
+      | {{ 'WELCOME_REGISTER' | translate }}
+  .login-box.box(ng-if='landingCtrl.state === "login"')
+    input.default-input(type='email' name='email' model='landingCtrl.email' placeholder='{{ "EMAIL" | translate }}')
+    input.default-input(type='password' name='password' model='landing.password' placeholder='{{ "PASSWORD" | translate }}')
+  .register-box.box(ng-if='landingCtrl === "register"')
+    input.default-input(type='text' name='name' model='landingCtrl.name' placeholder='{{ "NAME" | translate }}')
+    input.default-input(type='email' name='email' model='landingCtrl.email' placeholder='{{ "EMAIL" | translate }}')
+    input.default-input(type='password' name='password' model='landing.password' placeholder='{{ "PASSWORD" | translate }}')
+  .button-container
+    span(ng-if='landingCtrl.state === "login"')
+      button.default-button(ng-click='landingCtrl.next()')
+          | {{ 'LOGIN' | translate }}
+      button.default-button(ng-click='landingCtrl.changeState()')
+          | {{ 'REGISTER_CHANGE' | translate }}
+    span(ng-if='landingCtrl.state === "register"')
+      button.default-button(ng-click='landingCtrl.next()')
+          | {{ 'REGISTER' | translate }}
+      button.default-button(ng-click='landingCtrl.changeState()')
+          | {{ 'LOGIN_CHANGE' | translate }}

@@ -1,0 +1,11 @@
+| I'm a Teacher
+.pick-new.section-container
+  // This should be multiple
+  input.default-input(name='behaviours' type='text' placeholder='{{ "BEHAVIOURS" | translate }}' model='usrCtr.behaviours')
+  button.default-button(ng-click='usrCtr.select()')
+    | {{ 'PICK_BEHAVIOURS' | translate }}
+.old-ones.section-container
+  .selfware(ng-if='usrCtr.selfwares' ng-repeat='selfware in usrCtr.selfwares' ng-click='usrCtr.gotoSelfware()')
+    | {{selfware.suggestion.behaviour.name}}
+  .no-options(ng-if='!usrCtr.selfwares')
+    | {{ 'NO_SELFWARES' | translate }}
