@@ -3,18 +3,15 @@ angular.module('selfware').controller('UserController',
     function (mainService) {
       this.userId = 'id';
       this.type = 'teacher';
-      /*mainService.getTest().then(
-        (result) => {
-          debugger
-          console.log('done');
-          this.helloWorld = result;
-        }
-      ).catch(
-        (error) => {
-          debugger
-          console.log('not done');
-        }
-      );
-      */
+
+      this.behaviours = [
+        { name: 'tag1', code: 1 },
+        { name: 'tag2', code: 2 },
+        { name: 'tag3', code: 3 },
+        { name: 'tag4', code: 4 }
+      ];
+
+
+
     }
   ]);

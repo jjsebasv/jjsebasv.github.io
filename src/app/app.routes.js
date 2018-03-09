@@ -60,14 +60,14 @@ angular.module('selfware').config([
           }
         }
       })
-      .state('logged.selfware', {
-        url: '/user/:userid/selfware/:behaviourid',
+      .state('logged.suggestions', {
+        url: '/suggestions',
         views: {
           'teacher-content': {
-            templateUrl: '../app/components/logged/selfware/teacherSelfware.html'
+            templateUrl: '../app/components/logged/suggestions/suggestion.html'
           },
           'student-content': {
-            templateUrl: '../app/components/logged/selfware/studentSelfware.html'
+            templateUrl: '../app/components/logged/suggestion/suggestion.html'
           }
         }
       })

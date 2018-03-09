@@ -10,8 +10,4 @@
   span(ng-switch-default)
     | {{ 'ADD_SELFWARE_STUDENT' | translate }}
 
-select(ui-select2="" ng-model="select2" data-placeholder="Pick a number")
-  option(value="")
-  option(value="one") First
-  option(value="two") Second
-  option(value="three") Third
+select(chosen multiple options='usrCtr.behaviours' ng-model='usrCtr.selectedOptions' ng-options='behaviour as behaviour.name for behaviour in usrCtr.behaviours')
