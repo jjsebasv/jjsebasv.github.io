@@ -43,4 +43,3 @@ gulp.task('sass', ['clean:css'], () => {
     .pipe(gulpif(taskOptions.sourcemaps, sourcemaps.write()))
     .pipe(gulp.dest(localConfig.dest));
 });
-

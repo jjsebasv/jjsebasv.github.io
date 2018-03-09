@@ -47,13 +47,27 @@ angular.module('selfware').config([
       })
 
       .state('logged.user', {
-        url: '/user',
+        url: '/user/:userid',
         views: {
           'teacher-content': {
             templateUrl: '../app/components/logged/teacher/teacher.html'
           },
           'student-content': {
             templateUrl: '../app/components/logged/student/student.html'
+          },
+          'add-selfware': {
+            templateUrl: '../app/components/logged/selfware/addSelfware.html'
+          }
+        }
+      })
+      .state('logged.selfware', {
+        url: '/user/:userid/selfware/:behaviourid',
+        views: {
+          'teacher-content': {
+            templateUrl: '../app/components/logged/selfware/teacherSelfware.html'
+          },
+          'student-content': {
+            templateUrl: '../app/components/logged/selfware/studentSelfware.html'
           }
         }
       })

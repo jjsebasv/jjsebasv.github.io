@@ -1,0 +1,17 @@
+.title(ng-switch='usrCtr.user.type')
+  span(ng-switch-when='teacher')
+    | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'TEACHER_AM_I' | translate }}
+  span(ng-switch-default)
+    | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'STUDENT_AM_I' | translate }}
+
+.subtitle(ng-switch='usrCtr.user.type')
+  span(ng-switch-when='teacher')
+    | {{ 'ADD_SELFWARE_TEACHER' | translate }}
+  span(ng-switch-default)
+    | {{ 'ADD_SELFWARE_STUDENT' | translate }}
+
+select(ui-select2="" ng-model="select2" data-placeholder="Pick a number")
+  option(value="")
+  option(value="one") First
+  option(value="two") Second
+  option(value="three") Third
