@@ -6,6 +6,6 @@ module.exports = [
   'angular-ui-router/release/angular-ui-router.js',
   'angular-local-storage/dist/angular-local-storage.js',
   'angular-translate/dist/angular-translate.js',
-  'angular-chosen-localytics/dist/angular-chosen.js',
+  'angular.chosen/angular-chosen.min.js',
   'angular-ui-select2/src/select2.js'
 ];

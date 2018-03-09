@@ -3,7 +3,7 @@ angular.module(
     'ui.router',
     'LocalStorageModule',
     'pascalprecht.translate',
-    'localytics.directives',
-    'ui.select2'
+    'ui.select2',
+    'angular.chosen'
   ]
 );
