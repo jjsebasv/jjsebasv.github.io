@@ -1,0 +1,34 @@
+.title.text-left
+  h3.font-weight-bold Recommended Strategies
+.suggestion-container
+  .selection-box.information-box(ng-repeat='suggestion in usrCtr.suggestions')
+    .information-wrapper
+      h4
+        | title
+      span
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      span
+        | x out of y blah people who have z behavior recommend this strategy
+    .action-button
+      button.default-button(ng-if='!suggestion.added')
+        | Add
+      button.disabled-button(ng-if='suggestion.added')
+        | Added
+
+
+.title.text-left(ng-repeat='suggestions in all.suggestions-categories')
+  h3.font-weight-bold suggestion category
+.suggestion-container
+  .selection-box.information-box(ng-repeat='suggestion in category.suggestions')
+    .information-wrapper
+      h4
+        | title
+      span
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      span
+        | x out of y blah people who have z behavior recommend this strategy
+    .action-button
+      button.default-button(ng-if='!suggestion.added')
+        | Add
+      button.disabled-button(ng-if='suggestion.added')
+        | Added

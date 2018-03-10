@@ -1,6 +1,10 @@
 .nav-bar {
   height: 50px;
-  background: $green;
-  width: 100vw;
-  padding-left: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $green;
+  color: $white;
+  z-index: 3;
+  padding: 0 15px;
 }

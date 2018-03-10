@@ -69,11 +69,8 @@ angular.module('selfware').config([
       .state('logged.suggestions', {
         url: '/suggestions',
         views: {
-          'teacher-content': {
-            templateUrl: '../app/components/logged/suggestions/suggestion.html'
-          },
-          'student-content': {
-            templateUrl: '../app/components/logged/suggestion/suggestion.html'
+          'suggestions': {
+            templateUrl: '../app/components/logged/suggestions/suggestions.html'
           }
         }
       })

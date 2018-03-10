@@ -1,5 +1,5 @@
-'use strict';
 
+'use strict';
 angular.module('selfware').config(['$translateProvider', function ($translateProvider) {
 
   $translateProvider.translations('en', {

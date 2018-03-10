@@ -2,8 +2,10 @@
 .side-bar(ui-view='sidebar')
 .nav-bar(ui-view='navbar')
 .main-section
-  span(ng-if='usrCtr.getSelfwares() && !usrCtr.addingSelfwares')
+  span(ng-if='usrCtr.userSuggestions && !usrCtr.addingSelfwares')
     .main-container(ng-if='usrCtr.user.type === "student"' ui-view='student-content')
     .main-container(ng-if='usrCtr.user.type === "teacher"' ui-view='teacher-content')
-  span(ng-if='!usrCtr.getSelfwares() || usrCtr.addingSelfwares')
+  span(ng-if='(!usrCtr.userSuggestions || usrCtr.addingSelfwares) && !usrCtr.suggestions')
     .main-container(ui-view='add-selfware')
+  span(ng-if="usrCtr.suggestions")
+    .main-container(ui-view='suggestions')

@@ -10,10 +10,16 @@
   span(ng-switch-default)
     | {{ 'ADD_SELFWARE_STUDENT' | translate }}
 
+.container
+  h4(ng-if='!usrCtr.getSelfwares()')
+    | Welcome to Selfware. To get started, search for some behaviors you want to work on below, and we will come up with some suggestions for you.
+  h4(ng-if='usrCtr.getSelfwares()')
+    | Welcome back to Selfware. Check on your current progress and add some new things to focus on!
+
 .behaviour-container
   input.search-box.default-input(type='text' ng-model='filterText')
 
-  .behaviour(ng-repeat='behaviour in usrCtr.behaviours | filter : filterText')
+  .selection-box(ng-repeat='behaviour in usrCtr.behaviours | filter : filterText')
     .name
       | {{ behaviour.name }}
     .action-button
@@ -21,3 +27,5 @@
         | Add
       button.disabled-button(ng-if='behaviour.added')
         | Added
+
+a.btn.btn-primary.btn-lg.default-button(href='#', role='button') View Suggestions
