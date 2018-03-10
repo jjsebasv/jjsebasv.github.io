@@ -30,3 +30,7 @@ body,
 .second-button {
   @include customBtn($green, $white, $green, $green, $green, $white);
 }
+
+.disabled-button {
+  @include customBtn($ligth-gray, $ligth-gray, $white, $ligth-gray, $ligth-gray, $ligth-gray);
+}

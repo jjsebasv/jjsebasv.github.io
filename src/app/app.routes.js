@@ -53,7 +53,7 @@ angular.module('selfware').config([
       })
 
       .state('logged.user', {
-        url: '/user/:userid',
+        url: '/user',
         views: {
           'teacher-content': {
             templateUrl: '../app/components/logged/teacher/teacher.html'

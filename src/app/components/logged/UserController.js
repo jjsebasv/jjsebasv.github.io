@@ -1,17 +1,32 @@
 angular.module('selfware').controller('UserController',
-  [ 'mainService',
-    function (mainService) {
-      this.userId = 'id';
-      this.type = 'teacher';
+  ['$rootScope', '$state', 'userService',
+    function ($rootScope, $state, userService) {
+      if ($rootScope.user === null) {
+        $state.go('unlogged.landing')
+      } else {
+        this.user = $rootScope.user;
+      }
+      this.type = this.user.type;
 
-      this.behaviours = [
-        { name: 'tag1', code: 1 },
-        { name: 'tag2', code: 2 },
-        { name: 'tag3', code: 3 },
-        { name: 'tag4', code: 4 }
-      ];
+      userService.getPossibleBehaviours().then(
+        (response) => {
+          this.behaviours = response.data;
+        }).catch(); // TODO
 
+      this.selectBehaviour = (behaviourid) => {
+        userService.addBehaviour(this.user.id,behaviourid).then(
+        ).catch();
+      };
 
+      this.selectSuggestion = (suggestionid) => {
+        userService.addSuggestion(this.user.id, suggestionid).then(
+        ).catch();
+      };
+
+      this.logout = () => {
+        $rootScope.user = null;
+        $state.go('unlogged.landing');
+      };
 
     }
   ]);

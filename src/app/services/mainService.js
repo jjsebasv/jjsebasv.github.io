@@ -10,5 +10,6 @@ angular.module('selfware').factory('mainService',
 
           return httpRequestService.defaultRequest('POST', `login`, data);
         }
+
       };
     }]);
