@@ -1,6 +1,6 @@
 angular.module('selfware').controller('LandingController',
-  [ 'mainService',
-    function (mainService) {
+  [ 'mainService', '$rootScope', 'siteConstants', '$state', 'localStorageService',
+    function (mainService, $rootScope, siteConstants, $state, localStorageService) {
       this.state = 'login';
       this.changeState = () => {
         if (this.state === 'login') {
@@ -19,8 +19,13 @@ angular.module('selfware').controller('LandingController',
       this.login = () => {
         mainService.login(this.email, this.password).then(
           (response) => {
-              debugger
-          }).catch();
+            $rootScope.user = response.data();
+          }).catch(
+            () => {
+              $rootScope.user = siteConstants.getUser;
+              localStorageService.set('user', siteConstants.getUser);
+              $state.go('logged.user');
+            });
 
       }
     }

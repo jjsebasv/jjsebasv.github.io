@@ -53,7 +53,7 @@ angular.module('selfware').config([
       })
 
       .state('logged.user', {
-        url: '/user/:userid',
+        url: '/user',
         views: {
           'teacher-content': {
             templateUrl: '../app/components/logged/teacher/teacher.html'
@@ -69,8 +69,16 @@ angular.module('selfware').config([
       .state('logged.suggestions', {
         url: '/suggestions',
         views: {
-          'suggestions': {
+          suggestions: {
             templateUrl: '../app/components/logged/suggestions/suggestions.html'
+          }
+        }
+      })
+      .state('logged.newsuggestion', {
+        url: 'new',
+        views: {
+          newsuggestion: {
+            templateUrl: '../app/components/logged/suggestions/postSuggestion.html'
           }
         }
       })

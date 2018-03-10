@@ -1,14 +1,3 @@
-.title(ng-switch='usrCtr.user.type')
-  span(ng-switch-when='teacher')
-    | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'TEACHER_AM_I' | translate }}
-  span(ng-switch-default)
-    | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'STUDENT_AM_I' | translate }}
-
-.subtitle(ng-switch='usrCtr.user.type')
-  span(ng-switch-when='teacher')
-    | {{ 'ADD_SELFWARE_TEACHER' | translate }}
-  span(ng-switch-default)
-    | {{ 'ADD_SELFWARE_STUDENT' | translate }}
 
 .container
   h4(ng-if='!usrCtr.getSelfwares()')
@@ -16,16 +5,25 @@
   h4(ng-if='usrCtr.getSelfwares()')
     | Welcome back to Selfware. Check on your current progress and add some new things to focus on!
 
+
 .behaviour-container
+  h6.title(ng-switch='usrCtr.user.type')
+    span(ng-switch-when='teacher')
+      | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'TEACHER_AM_I' | translate }}. {{ 'ADD_SELFWARE_TEACHER' | translate }}
+    span(ng-switch-default)
+      | {{ 'I_AM' | translate }} {{ usrCtr.user.name }} {{ 'STUDENT_AM_I' | translate }}. {{ 'ADD_SELFWARE_STUDENT' | translate }}
+
   input.search-box.default-input(type='text' ng-model='filterText')
 
   .selection-box(ng-repeat='behaviour in usrCtr.behaviours | filter : filterText')
     .name
-      | {{ behaviour.name }}
+      | {{ behaviour.behaviour_name }}
     .action-button
-      button.default-button(ng-if='!behaviour.added')
+      button.default-button(ng-if='!behaviour.added' ng-click='usrCtrl.selectBehaviour()')
         | Add
       button.disabled-button(ng-if='behaviour.added')
         | Added
 
-a.btn.btn-primary.btn-lg.default-button(href='#', role='button') View Suggestions
+
+button.second-button(ng-click='usrCtrl.gotoSuggestions()')
+  | Go to Suggestions

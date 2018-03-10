@@ -1,1 +1,26 @@
-| I'm a Teacher
+.title
+  | Strategies
+
+.subtitle(ng-click='usrCtr.gotoSugestions()')
+  | Find more strategies
+
+.strategies-container
+  .selection-box.ranking-box(ng-repeat='suggestion in usrCtr.userSuggestions')
+    .information-wrapper
+      h4
+        | {{ suggestion.name }}
+      span
+        | {{ suggestion.description }}
+    .action-wrapper
+      .action-button(ng-repeat='objective in suggestion.behaviours')
+        .title
+          | {{ behaviours.name }}
+        button.default-button(ng-click='usrCtr.rank(suggestion, objective, 1)')
+          i.material-icons
+            | sentiment_very_satisfied
+        button.default-button(ng-click='usrCtr.rank(suggestion, objective, 0)')
+          i.material-icons
+            | sentiment_neutral
+        button.default-button(ng-click='usrCtr.rank(suggestion, objective, -1)')
+          i.material-icons
+            | sentiment_very_dissatisfied

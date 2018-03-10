@@ -1,0 +1,22 @@
+.title.text-left
+  h3.font-weight-bold My Own Strategy
+.suggestion-container
+  .information-wrapper
+    span(ng-if='usrCtr.user.type === "student"')
+      h4
+        | To help me
+      select.default-input(chosen options='usrCtr.objectives' ng-model='usrCtr.newSuggestion.objective' ng-options='objective as objective.name for objective in usrCtr.objectives')
+    span(ng-if='usrCtr.user.type === "teacher"')
+      h4
+        | To help my student work on
+      select.default-input(chosen options='usrCtr.behaviours' ng-model='usrCtr.newSuggestion.objective' ng-options='behaviour as behaviour.name for behaviour in usrCtr.behaviours')
+    h4
+      | I will
+    input.default-input(type='text' name='name' model='usrCtr.newSuggestion.name' placeholder='{{ "NAME" | translate }}')
+    h4
+      | Which I describe as
+    input.default-input(type='text' name='description' model='usrCtr.newSuggestion.description' placeholder='{{ "DESCRIPTION" | translate }}')
+
+  .action-button
+    button.default-button(ng-click='usrCtr.addSuggestion()')
+      | Add Suggestion

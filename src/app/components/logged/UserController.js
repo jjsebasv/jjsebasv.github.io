@@ -1,37 +1,88 @@
 angular.module('selfware').controller('UserController',
-  [ 'mainService', '$state',
-    function (mainService, $state) {
-      this.userId = 'id';
-      this.type = 'teacher';
-      this.user = {
-        name: 'Seb',
-        id: 1,
-        type: 'student'
+  ['$rootScope', '$state', 'userService', 'siteConstants', 'localStorageService',
+    function ($rootScope, $state, userService, siteConstants, localStorageService) {
+      this.user = localStorageService.get('user');
+      if ($rootScope.user === undefined || $rootScope.user === null) {
+        this.user = $rootScope.user;
+        this.user.behaviours = [];
+        //$state.go('unlogged.landing')
+      } else {
+        //this.user = localStorageService.get('user');
+        this.user = $rootScope.user;
+        this.user.behaviours = [];
       }
 
-      this.suggestions = $state.current.name === 'logged.suggestions';
-      this.userSuggestions = [{
-        name: 'sname',
-        objectives: [{name:'on1'},{name:'on1'},{name:'on1'},{name:'on1'}],
-      },{
-        name: 'sname',
-        objectives: [{name:'on1'},{name:'on1'},{name:'on1'},{name:'on1'}],
-      }, {
-        name: 'sname',
-        objectives: [{name:'on1'},{name:'on1'},{name:'on1'},{name:'on1'}],
-      }, {
-        name: 'sname',
-        objectives: [{name:'on1'},{name:'on1'},{name:'on1'},{name:'on1'}],
-      }];
+      this.type = this.user.type;
 
-      this.behaviours = [
-        { name: 'tag1', code: 1 },
-        { name: 'tag2', code: 2 },
-        { name: 'tag3', code: 3 },
-        { name: 'tag4', code: 4 }
-      ];
+      this.gotoSuggestions = () => {
+        this.suggestions = true;
+        this.newSuggestion = false;
+        $state.go('logged.suggestions')
+      };
 
+      this.gotoNewSuggestions = () => {
+        this.suggestions = false;
+        this.newSuggestion = true;
+        $state.go('logged.newsuggestion')
+      };
 
+      const newSuggestion = () => {
+        return {
+          user_id: '',
+          suggestion_title: '',
+          suggestion_description: '',
+          suggestion_behaviour: ''
+        }
+      };
+
+      this.newSuggestion = newSuggestion();
+
+      this.addSuggestion = () => {
+        userService.addSuggestion(newSuggestion.suggestion_title, newSuggestion.suggestion_behaviour, newSuggestion.suggestion_behaviour.name, this.user.user_id).then(
+          () => {
+              this.suggestions = false;
+          }).catch(
+            () => {
+              this.suggestions = false;
+            });
+      };
+
+      userService.getPossibleBehaviours().then(
+        (response) => {
+          this.behaviours = response.data;
+        }).catch(
+          () => {
+            this.behaviours = siteConstants.getBehaviours.data;
+          }
+        );
+
+      this.selectBehaviour = (behaviourid) => {
+        userService.addBehaviour(this.user.id,behaviourid).then(
+        ).catch();
+        this.user.behaviours.push(behaviourid);
+        $rootScope.user = this.user;
+        localStorageService.set('user', this.user);
+      };
+
+      this.behaviourBelongs = (behaviourid) => {
+        this.user.behaviours.forEach((b) => {
+          if (b.behaviour_id === behaviourid)
+        })
+      }
+
+      this.selectSuggestion = (suggestionid) => {
+        userService.addSuggestion(this.user.id, suggestionid).then(
+        ).catch();
+      };
+
+      this.logout = () => {
+        $rootScope.user = null;
+        $state.go('unlogged.landing');
+      };
+
+      this.rank = (suggestion, objective, rank) => {
+        userService.rankSugestion(this.user.id, suggestion.id, objective.id, rank)
+      };
 
     }
   ]);

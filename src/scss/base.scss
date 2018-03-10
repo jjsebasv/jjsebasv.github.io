@@ -43,3 +43,7 @@ body {
 .second-button {
   @include customBtn($green, $white, $green, $green, $green, $white);
 }
+
+.disabled-button {
+  @include customBtn($light-grey, $light-grey, $white, $light-grey, $light-grey, $light-grey);
+}
