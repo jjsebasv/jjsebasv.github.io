@@ -1,6 +1,9 @@
 // FIXME change this to switch
-span(ng-if='usrCtr.getSelfwares() && !usrCtr.addingSelfwares')
-  .main-container(ng-if='usrCtr.user.type === "student"' ui-view='student-content')
-  .main-container(ng-if='usrCtr.user.type === "teacher"' ui-view='teacher-content')
-span(ng-if='!usrCtr.getSelfwares() || usrCtr.addingSelfwares')
-  .main-container(ui-view='add-selfware')
+.side-bar(ui-view='sidebar')
+.nav-bar(ui-view='navbar')
+.main-section
+  span(ng-if='usrCtr.getSelfwares() && !usrCtr.addingSelfwares')
+    .main-container(ng-if='usrCtr.user.type === "student"' ui-view='student-content')
+    .main-container(ng-if='usrCtr.user.type === "teacher"' ui-view='teacher-content')
+  span(ng-if='!usrCtr.getSelfwares() || usrCtr.addingSelfwares')
+    .main-container(ui-view='add-selfware')

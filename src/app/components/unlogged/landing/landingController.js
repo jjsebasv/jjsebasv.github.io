@@ -2,18 +2,26 @@ angular.module('selfware').controller('LandingController',
   [ 'mainService',
     function (mainService) {
       this.state = 'login';
-      /*mainService.getTest().then(
-        (result) => {
-          debugger
-          console.log('done');
-          this.helloWorld = result;
+      this.changeState = () => {
+        if (this.state === 'login') {
+          this.state = 'register';
+        } else {
+          this.state = 'login'
         }
-      ).catch(
-        (error) => {
-          debugger
-          console.log('not done');
-        }
-      );
-      */
+      }
+
+      this.types = [
+        'student',
+        'teacher'
+        // NTH doctor
+      ];
+
+      this.login = () => {
+        mainService.login(this.email, this.password).then(
+          (response) => {
+              debugger
+          }).catch();
+
+      }
     }
   ]);

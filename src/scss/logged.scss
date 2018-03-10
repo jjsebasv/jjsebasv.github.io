@@ -1,0 +1,21 @@
+.main-container {
+  padding-top: 40px;
+  padding-left: 200px;
+  background-color: $white;
+  height: calc(100vh - 50px);
+  width: 100vw;
+}
+
+.behaviour {
+  margin: 10px;
+  border: 1px solid $light-grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.search-box {
+  width: calc(100% - 10px);
+}

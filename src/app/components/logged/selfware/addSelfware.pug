@@ -10,4 +10,14 @@
   span(ng-switch-default)
     | {{ 'ADD_SELFWARE_STUDENT' | translate }}
 
-select(chosen multiple options='usrCtr.behaviours' ng-model='usrCtr.selectedOptions' ng-options='behaviour as behaviour.name for behaviour in usrCtr.behaviours')
+.behaviour-container
+  input.search-box.default-input(type='text' ng-model='filterText')
+
+  .behaviour(ng-repeat='behaviour in usrCtr.behaviours | filter : filterText')
+    .name
+      | {{ behaviour.name }}
+    .action-button
+      button.default-button(ng-if='!behaviour.added')
+        | Add
+      button.disabled-button(ng-if='behaviour.added')
+        | Added

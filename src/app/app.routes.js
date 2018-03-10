@@ -42,6 +42,12 @@ angular.module('selfware').config([
             templateUrl: '../app/components/logged/logged.html',
             controller: 'UserController',
             controllerAs: 'usrCtr'
+          },
+          'navbar@logged': {
+            templateUrl: '../app/components/logged/navbar.html'
+          },
+          'sidebar@logged': {
+            templateUrl: '../app/components/logged/sidebar.html'
           }
         }
       })

@@ -1,17 +1,32 @@
-body {
+body,
+.center {
+  background-color: $green;
   font-family: 'Montserrat', sans-serif;
-  height: 297mm;
+  height: 100vh;
   margin: 0 auto;
   text-align: center;
-  width: 210mm;
+  width: 100vw;
 }
 
-.center {
-  align-items: flex-start;
+.default-input {
   background-color: $grey-background;
-  display: flex;
-  flex-wrap: wrap;
-  height: 297mm;
-  text-align: center;
-  width: 210mm;
+  border: 0;
+  margin: 10px;
+  height: 40px;
+  width: 250px;
+  padding: 5px;
+
+
+  &:focus {
+    outline: none;
+    border-bottom: 2px solid $green;
+  }
+}
+
+.default-button {
+  @include customBtn($green, $green, $white, $green, transparent, $green);
+}
+
+.second-button {
+  @include customBtn($green, $white, $green, $green, $green, $white);
 }

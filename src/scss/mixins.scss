@@ -1,0 +1,16 @@
+@mixin customBtn($border-color, $background-color, $text-color, $hover-border-color, $hover-bg-color, $hover-text-color) {
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  color: $text-color;
+  line-height: 30px;
+  margin: 5px;
+  padding: 5px 10px;
+
+  &:hover,
+  &.active {
+    background-color: $hover-bg-color;
+    border-color: $hover-border-color;
+    color: $hover-text-color;
+  }
+}
